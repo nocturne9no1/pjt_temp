@@ -47,4 +47,16 @@
   * props 일단
     * border, color, radius, height, width, onClick
     * 만 줌
-  * 이후 필요성에 따라 수정 가느
+  * 이후 필요성에 따라 수정 가능
+
+
+
+## 220324
+
+형규
+
+* CodeMirror 설치
+  * @codemirror/lang-javascript 설치
+  * 아마 언어 지원하려면 언어별로 깔아야하나보다
+  * 간단한 테스트
+  * 
