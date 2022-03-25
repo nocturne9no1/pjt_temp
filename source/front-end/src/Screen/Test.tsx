@@ -1,21 +1,33 @@
-import React from "react";
-import { Button } from "../components";
+import React, { useState } from "react";
+import CodeMirror from "@uiw/react-codemirror";
+import { python } from "@codemirror/lang-python";
 
 const Test: React.FC = (): JSX.Element => {
+  const [codeValue, setCodeValue] = useState("");
+
   return (
     <div>
       <h2>Test</h2>
-      <Button
-        border="none"
-        color="#f2f2f2"
-        radius="50%"
-        height="50px"
-        width="200px"
-        onClick={() => console.log("test")}
-      >
-        버튼
-      </Button>
-      <button>dd</button>
+      <CodeMirror
+        value=""
+        height="200px"
+        lang="python"
+        extensions={[python()]}
+        theme="dark"
+        onChange={(value, viewUpdate) => {
+          console.log("value:", value);
+          setCodeValue(value);
+        }}
+      />
+      <br />
+      <div>
+        <CodeMirror
+          value={codeValue}
+          editable={false}
+          theme="dark"
+          extensions={[python()]}
+        />
+      </div>
     </div>
   );
 };

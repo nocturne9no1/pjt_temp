@@ -1,7 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import { Home, Test } from "./Screen";
-import "./App.css";
 import "./scss/_reset.scss";
 
 function App() {
