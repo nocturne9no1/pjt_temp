@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@codemirror/lang-javascript": "^0.19.7",
+    "@codemirror/lang-python": "^0.19.4",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
