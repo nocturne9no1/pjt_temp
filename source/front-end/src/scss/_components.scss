@@ -1,0 +1,8 @@
+@import "variables";
+
+.container {
+  position: relative;
+  .container_inner {
+    @include max_width_st;
+  }
+}
