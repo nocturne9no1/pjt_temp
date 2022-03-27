@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import { Navbar, Footer } from "./layouts";
-import { Home, Test } from "./Screen";
+import { Home, Test, QuestionForm, QuestionDetail } from "./Screen";
 import "./scss/common.scss";
 
 function App() {
@@ -13,6 +13,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/test" element={<Test />} />
+            <Route path="/question" element={<QuestionForm />} />
+            <Route path="/question-detail" element={<QuestionDetail />} />
           </Routes>
         </div>
       </div>
