@@ -3,6 +3,7 @@ import "../scss/QuestionForm.scss";
 // 향후 모듈화를 통해 하나로 관리 - 지원 언어 많아지면 코드 비대
 import CodeMirror from "@uiw/react-codemirror";
 import { python } from "@codemirror/lang-python";
+import { javascript } from "@codemirror/lang-javascript";
 
 const QuestionForm: React.FC = (): JSX.Element => {
   const [title, setTitle] = useState<string>("");
@@ -10,7 +11,8 @@ const QuestionForm: React.FC = (): JSX.Element => {
   const [type, setType] = useState<string>("");
   const [codeValue, setCodeValue] = useState<string>("");
   const [content, setContent] = useState<string>("");
-
+  const [lang, setLang] = useState<Array<string>>([]);
+  // [javascript()];
   const onTextChange = (
     e: React.FormEvent<HTMLInputElement>,
     setFunc: Function
@@ -23,8 +25,10 @@ const QuestionForm: React.FC = (): JSX.Element => {
   ) => {
     setFunc(e.currentTarget.value);
   };
-
-  // 이후
+  const onLangChange = (e: React.FormEvent<HTMLSelectElement>) => {
+    setLang([...lang, `${e.currentTarget.value}()`]);
+  };
+  // 이후 axios 로 서버랑 통신
   const _handleSubmitButton = () => {
     console.log(title);
     console.log(platform);
@@ -72,10 +76,21 @@ const QuestionForm: React.FC = (): JSX.Element => {
         <option value="버그/에러">버그/에러</option>
         <option value="Etc.">Etc.</option>
       </select>
+      <select
+        name="lang"
+        id="language-select"
+        defaultValue={""}
+        onChange={(e) => onLangChange(e)}
+      >
+        <option value="" disabled>
+          언어 선택
+        </option>
+        <option value="python">python</option>
+        <option value="javascript">javascript</option>
+      </select>
       <div className="code_input_wrap">
         <CodeMirror
           minHeight="300px"
-          lang="python"
           extensions={[python()]}
           theme="dark"
           onChange={(value) => {

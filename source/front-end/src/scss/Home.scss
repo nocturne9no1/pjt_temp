@@ -1,0 +1,34 @@
+@import "variables.scss";
+
+.question_card_list {
+  .question_card_wrap {
+    margin-top: 20px;
+    width: 800px;
+    padding: 30px 60px;
+    background-color: antiquewhite;
+    .question_card_title {
+      font-size: $font_base + 10px;
+      color: #222;
+      text-decoration: none;
+    }
+    @mixin ico_render($ico_name) {
+      content: "";
+      width: 20px;
+      height: 20px;
+      display: inline-block;
+      background: url("../../public/assets/ico/#{$ico_name}.png") center/20px;
+    }
+    // .like::before {
+    //   @include ico_render("heart");
+    // }
+    // .reply::before {
+    //   @include ico_render("comment");
+    // }
+    $ico_list: "like", "reply";
+    @each $ico in $ico_list {
+      .#{$ico}::before {
+        @include ico_render($ico);
+      }
+    }
+  }
+}
