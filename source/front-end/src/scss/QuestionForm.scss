@@ -1,0 +1,5 @@
+.question_form_wrap {
+  select option[value=""][disabled] {
+    display: none;
+  }
+}

@@ -1,3 +1,6 @@
+// font
+$font_base: 14px;
+
 // color
 $bg_color01: #d6a46b;
 
@@ -7,10 +10,10 @@ $max_width: 1240px;
   margin: {
     left: auto;
     right: auto;
-  };
+  }
   padding: {
     left: 20px;
     right: 20px;
-  };
+  }
   width: $max_width;
 }
