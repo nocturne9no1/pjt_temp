@@ -1,5 +1,7 @@
 // font
 $font_base: 14px;
+$font-EN: 'Roboto', sans-serif;
+$font-KR: 'Noto Sans KR', sans-serif;
 
 // color
 $bg_color01: #d6a46b;
@@ -8,12 +10,15 @@ $max_width: 1240px;
 
 @mixin max_width_st {
   margin: {
-    left: auto;
-    right: auto;
+    margin: 0 auto;
   }
   padding: {
     left: 20px;
     right: 20px;
   }
-  width: $max_width;
+  max-width: $max_width;
+}
+
+@mixin tag {
+  padding: 6px;
 }
