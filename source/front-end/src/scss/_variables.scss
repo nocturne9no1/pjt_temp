@@ -6,12 +6,14 @@ $font-KR: 'Noto Sans KR', sans-serif;
 // color
 $bg_color01: #d6a46b;
 
+$font-color01: #000000;
+$font-color02: #333;
+$font-color03: #555;
+
 $max_width: 1240px;
 
 @mixin max_width_st {
-  margin: {
-    margin: 0 auto;
-  }
+  margin: 0 auto;
   padding: {
     left: 20px;
     right: 20px;

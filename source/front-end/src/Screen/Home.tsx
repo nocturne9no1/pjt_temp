@@ -1,5 +1,7 @@
-import React, { useState, useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
+import HomeQuestionForm from "../components/HomeQuestionForm";
+import HomeLeft from "../components/HomeLeft";
+import QuestionCard from "../components/QuestionCard";
+import HomeRight from "../components/HomeRight";
 import "../scss/Home.scss";
 
 const Home: React.FunctionComponent = (): JSX.Element => {
@@ -107,89 +109,21 @@ const Home: React.FunctionComponent = (): JSX.Element => {
       }
     },
   ];
+
   return (
     <main id="container" className="container">
-      <h2>시작화면이 될 곳입니다. 보통 페이지의 제목을 h2로 하더라구요</h2>
-      <p>테스트 링크는 아래 있읍니다</p>
-      <Link to="/test">테스트 페이지</Link>
-      <Link to="/question">질문 쓰기</Link>
-      <ul className="question_card_list">
-        {QuestionListSamples.map((sample, idx) => {
-          return <QuestionCard sample={sample} key={idx}/>;
-        })}
-      </ul>
+      {/* <h2>시작화면이 될 곳입니다. 보통 페이지의 제목을 h2로 하더라구요</h2> */}
+      <HomeLeft></HomeLeft>
+      <div className="home-middle-wrap">
+        <HomeQuestionForm></HomeQuestionForm>
+        <ul className="question_card_list">
+          {QuestionListSamples.map((sample, idx) => {
+            return <QuestionCard sample={sample} key={idx}/>;
+          })}
+        </ul>
+      </div>
+      <HomeRight></HomeRight>
     </main>
-  );
-};
-
-interface QuestionCardProps {
-  problem: {
-    name: string,
-    num: string,
-    platform: string
-  }
-  title: string,
-  type: string,
-  like: number,
-  reply: number,
-  detail: {
-    text: string,
-    code: string
-  }
-}
-
-const QuestionCard = ({
-  sample,
-}: {
-  sample: QuestionCardProps;
-}): JSX.Element => {
-  const { problem, title, type, like, reply, detail } = sample;
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [height, setHeight] = useState<number>(0);
-  const code = useRef<any>();
-  const text = useRef<any>();
-
-
-  const _handleBtn: Function = (): void => {
-    setIsOpen(!isOpen);
-  }
-
-  useEffect(() => {
-    if (isOpen) {
-      setHeight(code.current.clientHeight + text.current.clientHeight);
-    } else {
-      setHeight(0);
-    }
-  }, [isOpen])
-  return (
-    <li className="question_card_wrap">
-      <div className="card-header">
-        <p className="problem-info">
-          <span className="tag platform">{problem.platform}</span>
-          <span className="title">{problem.name}</span>
-          <a href={`https://www.acmicpc.net/problem/${problem.num}`} target="_blank" rel="noopener noreferrer" className="problem-link">문제보기</a>
-        </p>
-        <div className="title-wrap">
-          <span className="problem-species tag">{type}</span>
-          <strong className="question_card_title">{title}</strong>
-        </div>
-        <button onClick={() => _handleBtn()}>더보기</button>
-      </div>
-      <div className={`detail-area ${isOpen ? "open" : ""}`} style={{height: height}}>
-        <div className="code" ref={code}>
-          <pre>
-            {detail.code}
-          </pre>
-        </div>
-        <p className="text" ref={text}>
-          {detail.text}
-        </p>
-      </div>
-      <div className="card_bottom">
-        <span className="like">{like}</span>
-        <span className="reply">{reply}</span>
-      </div>
-    </li>
   );
 };
 
