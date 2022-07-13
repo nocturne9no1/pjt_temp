@@ -3,8 +3,11 @@
 .container {
   position: relative;
   width: 100%;
+  display: flex;
   font-family: $font-KR;
+  background-color: #efefef;
   .container_inner {
+    padding-top: 40px;
     @include max_width_st;
   }
 }
